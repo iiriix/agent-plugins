@@ -13,6 +13,13 @@ The plugin has one skill, `toman-rates`. The agent uses it when you ask things l
 /plugin install toman-rates@iiriix
 ```
 
+**Hermes Agent:** Hermes installs Agent Plugins disabled, so enable it afterwards. `hermes plugins update` keeps it up to date.
+
+```sh
+hermes plugins install iiriix/agent-plugins/plugins/toman-rates --no-enable
+hermes plugins enable toman-rates
+```
+
 **Other agents:** `npx skills add iiriix/agent-plugins --skill toman-rates`, or copy [`skills/toman-rates/`](skills/toman-rates/) into the agent's skills directory (for OpenCode, `~/.config/opencode/skills/`).
 
 ## Requirements

@@ -4,39 +4,29 @@ Plugins and [Agent Skills](https://agentskills.io). Each plugin installs on its 
 
 | Plugin | Contains | Description |
 |--------|----------|-------------|
-| [toman-rates](plugins/toman-rates/) | 1 skill | Live currency rates in Iranian Toman from the free iran-market.github.io feed, with pluggable sources: USD, CAD and EUR by default, or any of the 140+ currencies listed. Needs Python 3.8+. |
+| [toman-rates](plugins/toman-rates/) | 1 skill | Live currency rates in Iranian Toman from the free iran-market.github.io feed. |
 
 ## Install
+
+Each plugin installs on its own. See its README, linked in the table, for what it does, its requirements and plugin-specific install commands.
 
 **Claude Code:**
 
 ```
 /plugin marketplace add iiriix/agent-plugins
-/plugin install toman-rates@iiriix
+/plugin install <plugin>@iiriix
 ```
 
-**Other agents (skills):** with the [skills CLI](https://skills.sh), `npx skills add iiriix/agent-plugins` lets you pick which skills to install and for which agents. Or copy a skill's folder (for example `plugins/toman-rates/skills/toman-rates/`) into the agent's skills directory, such as `~/.config/opencode/skills/` for OpenCode.
-
-**Tools that load Agent Plugins:** point them at the plugin's folder, for example `plugins/toman-rates/`.
-
-## toman-rates
-
-The skill runs `plugins/toman-rates/skills/toman-rates/scripts/toman_rates.py`, which also works on its own:
+**Hermes Agent:** install each plugin from its folder. Hermes installs Agent Plugins disabled, so enable it afterwards.
 
 ```sh
-S=plugins/toman-rates/skills/toman-rates/scripts/toman_rates.py
-python3 $S                    # USD, CAD and EUR
-python3 $S -c gbp,try,aed     # -c/--currencies; ALL for every currency
-python3 $S -o json            # -o/--output text|json|csv, -h for help
-python3 $S -s iran-market     # -s/--sources; default all registered sources
+hermes plugins install iiriix/agent-plugins/plugins/<plugin> --no-enable
+hermes plugins enable <plugin>
 ```
 
-```
-Toman   iran-market
-USD         271,905
-CAD         194,310
-EUR         305,360
-```
+**Other agents (skills):** with the [skills CLI](https://skills.sh), `npx skills add iiriix/agent-plugins` lets you pick which skills to install and for which agents. Or copy a skill's folder (`plugins/<plugin>/skills/<skill>/`) into the agent's skills directory, such as `~/.config/opencode/skills/` for OpenCode.
+
+**Tools that load Agent Plugins:** point them at the plugin's folder, `plugins/<plugin>/`.
 
 ## Development
 

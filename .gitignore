@@ -12,5 +12,9 @@ venv/
 *.swp
 .DS_Store
 
+# Local test installs with `npx skills add` (project scope)
+skills-lock.json
+.agents/
+
 # Private toman-rates sources and APIs (see plugins/toman-rates/README.md)
 private_sources.py
