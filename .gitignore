@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+!__init__.py
+.venv/
+venv/
+
+# Environment and editor files
+.env
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Private toman-rates sources and APIs (see plugins/toman-rates/README.md)
+private_sources.py

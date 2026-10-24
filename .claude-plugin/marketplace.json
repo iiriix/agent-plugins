@@ -1,0 +1,30 @@
+{
+  "name": "iiriix",
+  "owner": {
+    "name": "iiriix"
+  },
+  "metadata": {
+    "description": "Plugins by iiriix for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "toman-rates",
+      "description": "Live currency rates (USD, EUR, CAD and more) in Iranian Toman from pluggable sources, iran-market.github.io by default.",
+      "version": "0.1.0",
+      "author": {
+        "name": "iiriix"
+      },
+      "homepage": "https://github.com/iiriix/agent-plugins/tree/main/plugins/toman-rates",
+      "repository": "https://github.com/iiriix/agent-plugins",
+      "license": "MIT",
+      "keywords": [
+        "currency",
+        "exchange-rate",
+        "iran",
+        "toman"
+      ],
+      "source": "./plugins/toman-rates",
+      "strict": false
+    }
+  ]
+}

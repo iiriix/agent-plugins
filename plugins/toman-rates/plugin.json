@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "toman-rates",
+  "version": "0.1.0",
+  "description": "Live currency rates (USD, EUR, CAD and more) in Iranian Toman from pluggable sources, iran-market.github.io by default.",
+  "author": {
+    "name": "iiriix"
+  },
+  "homepage": "https://github.com/iiriix/agent-plugins/tree/main/plugins/toman-rates",
+  "repository": "https://github.com/iiriix/agent-plugins",
+  "license": "MIT",
+  "keywords": ["currency", "exchange-rate", "iran", "toman"]
+}
