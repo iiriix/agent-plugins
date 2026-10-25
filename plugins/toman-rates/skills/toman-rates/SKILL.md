@@ -14,20 +14,28 @@ Gets current free-market rates for foreign currencies in Toman with the bundled 
 The script path is relative to this skill's directory:
 
 ```sh
-python3 scripts/toman_rates.py -c USD,EUR -o json
+python3 scripts/toman_rates.py
 ```
 
-It makes one web request per source and usually finishes in a few seconds (each request times out after 20 seconds).
+With no arguments it prints USD, CAD and EUR from every source. It makes one web request per source and usually finishes in a few seconds (each request times out after 20 seconds).
 
-- `-c`/`--currencies` takes comma-separated ISO 4217 codes, case-insensitive (default `USD,CAD,EUR`). Ask only for the currencies the user needs.
+- `-c`/`--currencies` takes comma-separated ISO 4217 codes, case-insensitive (default `USD,CAD,EUR`). Use it when the user wants other currencies.
 - `-c ALL` returns every currency the sources have (over 100). Use it only when the user wants the full list, or to find out whether a currency is available.
 - `-s`/`--sources` picks sources by name (default: all of them). `--help` lists them.
-
-Use `-o json` when you need to read or compute with the values. Use `text` (the default) or `csv` only when the user asks for that format.
+- `-o`/`--output` is `text` (the default), `json` or `csv`. Use `json` when you need to compute with the values, for example to convert an amount; use `csv` only when the user asks for it.
 
 ## Output
 
-JSON, one object per source that succeeded. Currencies keep the order given to `-c` (alphabetical for `ALL`), and a source that doesn't carry a currency leaves it out. Values are Toman per single unit of the currency: integers, or decimals for low-value currencies and those quoted per 100 units (for example JPY):
+Text is a table with a row per currency and a column per source that succeeded, `-` where a source doesn't carry a currency:
+
+```
+Toman   iran-market
+USD         103,500
+CAD          74,200
+EUR         120,300
+```
+
+JSON has one object per source that succeeded. Currencies keep the order given to `-c` (alphabetical for `ALL`), and a source that doesn't carry a currency leaves it out:
 
 ```json
 {
@@ -39,7 +47,7 @@ JSON, one object per source that succeeded. Currencies keep the order given to `
 }
 ```
 
-The numbers above are illustrative only; always run the command for real values.
+Values are Toman per single unit of the currency: whole numbers, or decimals for low-value currencies and those quoted per 100 units (for example JPY). The numbers above are illustrative only; always run the command for real values.
 
 - Multiply by 10 if the user asks for Rial.
 - The feed is updated every 30 minutes, and rates stay at the last close while the market is shut (for example on Fridays), so a figure can be a few hours old.
